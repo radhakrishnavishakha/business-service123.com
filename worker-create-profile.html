@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Client Profile Creation</title>
+    <link rel="stylesheet" href="profile-create.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="background-image"></div>
+
+        <div class="content">
+            <h1>Worker Profile Creation</h1>
+
+            <div class="profile-section">
+                <div class="profile-picture">
+                    <label for="worker_photo">
+                        <img id="preview" src="th.jpg" alt="Profile Picture">
+                    </label>
+                </div>
+                <button class="add-photo-btn">Add Photo</button>
+            </div>
+
+            <div class="form-section">
+                <form action="process_form.php" method="post"> 
+                    <table class="table-section">
+                        <tr>
+                            <td>
+                                <label for="first_name">First Name:</label>
+                                <input type="text" id="first_name" name="first_name" required>
+                            </td>
+                            <td>
+                                <label for="middle_name">Middle Name:</label>
+                                <input type="text" id="middle_name" name="middle_name">
+                            </td>
+                            <td>
+                                <label for="last_name">Last Name:</label>
+                                <input type="text" id="last_name" name="last_name" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >
+                                <label for="dob">Date of Birth:</label>
+                                <input type="date" id="dob" name="dob" required>
+                            </td>
+                            <td colspan="2">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="contact_no">Contact No:</label>
+                                <input type="tel" id="contact_no" name="contact_no" required>
+                            </td>
+                            <td>
+                                <label for="work_type">Work Type:</label>
+                                <select id="work_type" name="work_type" required>
+                                    <option value="">Select Work Type</option>
+                                    <option value="option1">Option 1</option>
+                                    <option value="option2">Option 2</option>
+                                    {/* Add more options as needed */}
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">
+                               <label for="address">Address:</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="state">State:</label>
+                                <input type="text" id="state" name="state" required>
+                            </td>
+                            <td>
+                                <label for="area">Area:</label>
+                                <input type="text" id="area" name="area" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="pin_code">Pin Code:</label>
+                                <input type="number" id="pin_code" name="pin_code" required>
+                            </td>
+                            <td>
+                                <label for="city">City:</label>
+                                <input type="text" id="city" name="city" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="skills">Skills:</label>
+                                <textarea id="skills" name="skills" required></textarea>
+                            </td>
+                            <td>
+                                <label for="experience">Experience:</label>
+                                <input type="text" id="experience" name="experience" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <label for="work_photos">Work Photos:</label>
+                                <input type="file" id="work_photos" name="work_photos[]" multiple accept="image/*">
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button type="submit" class="register-button">Submit</button>
+                </form>
+            </div>
+
+            <input type="file" id="worker_photo" name="worker_photo" accept="image/*" style="display: none;" onchange="previewImage(event)">
+        </div>
+    </div>
+
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function() {
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+
+        document.querySelector('.add-photo-btn').addEventListener('click', function() {
+            document.getElementById('worker_photo').click();
+        });
+    </script>
+</body>
+
+</html>

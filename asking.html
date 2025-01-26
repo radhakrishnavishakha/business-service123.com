@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Role</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f8f8;
+            /* Light gray background */
+        }
+        
+        .container {
+            text-align: center;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px #8a2ce8;
+        }
+        
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #663399;
+            /* Purple color */
+        }
+        
+        p {
+            margin-bottom: 2rem;
+            color: #663399;
+            /* Purple color */
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            /* Adjust width as needed */
+        }
+        
+        .option img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        
+        button {
+            background-color: #663399;
+            /* Purple color */
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Choose what you are looking for</h1>
+        <p>No.1 Job platform for Bharat users</p>
+
+        <div class="options">
+            <div class="option">
+                <img src="client.jpg" alt="I want to Hire">
+                <label for="hire">I want to Hire</label>
+                <input type="radio" id="hire" name="role" value="hire">
+            </div>
+
+            <div class="option">
+                <img src="worker.jpg" alt="I want a Job">
+                <label for="job">I want a Job</label>
+                <input type="radio" id="job" name="role" value="job">
+            </div>
+        </div>
+
+        <button id="nextBtn">Next</button>
+    </div>
+
+    <script>
+        const nextBtn = document.getElementById('nextBtn');
+
+        nextBtn.addEventListener('click', () => {
+            const selectedRole = document.querySelector('input[name="role"]:checked');
+
+            if (selectedRole) {
+                const roleValue = selectedRole.value;
+
+                if (roleValue === 'hire') {
+                    // Redirect to hire profile page (example)
+                    window.location.href = 'client-create-profile.html';
+                } else if (roleValue === 'job') {
+                    // Redirect to job seeker profile page (example)
+                    window.location.href = 'worker-create-profile.html';
+                }
+            } else {
+                alert("Please select a role.");
+            }
+        });
+    </script>
+
+    <?php
+        if(isset($_POST['role'])) {
+            $role = $_POST['role']; 
+
+            // Process the selected role (e.g., store in a session, redirect to a database)
+            if($role === 'hire') {
+                // Redirect to hire profile page
+                header("Location: hire_profile.html");
+                exit();
+            } elseif($role === 'job') {
+                // Redirect to job seeker profile page
+                header("Location: job_seeker_profile.html");
+                exit();
+            }
+        }
+    ?>
+
+</body>
+
+</html>

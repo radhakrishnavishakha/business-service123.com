@@ -1,0 +1,155 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="logsign.css">
+    
+
+</head>
+
+<body style="background-color: #fff;">
+    <div class="container">
+        <div class="left-section">
+            <h1>Log in to</h1>
+            <h2>BUSINESS SERVICE<br> SYSTEM</h2>
+            <p>if you have an account, <br> you can <a href="login.html">Log in </a></p>
+        </div>
+
+        <div class="image-section">
+            <img src="image1.jpeg" alt="Character Illustration">
+        </div>
+
+        <div class="right-section">
+            <form action="signup-b.php" method="post">
+            <h2>Signup</h2>
+            <input type="text" id="username" name="username" placeholder="Enter user name"><br>
+            <input type="email" id="email" name="email" placeholder="Enter email"><br>
+           <div class="password">
+            
+            <input type="password" id="password" name="password" placeholder="Password"><br>
+           <img src="hide-password.png" onclick="pass()" class="pass-icon" id="pass-icon">
+            </div>
+            <div class="password1">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+            <img src="hide-password3.png" onclick="pass1()" class="pass-icon1" id="pass-icon1">
+            </div>
+
+            <button type="submit" class="btn" id="signupButton" name="submit">Signup</button>
+            <p class="p3">or continue with</p>
+            <div class="social-login">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-apple"></i>
+                <i class="fa-brands fa-google"></i>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var a;
+function pass(){
+if(a==1)
+{
+ document.getElementById('password').type='password'; document.getElementById('pass-icon').src='hide-password.png';
+ a=0;
+}
+else{
+ document.getElementById('password').type='text';
+document.getElementById('pass-icon').src='hide-password2.png';
+a=1;
+}
+}
+       var b;
+function pass1(){
+if(b==1)
+{
+ document.getElementById('confirmPassword').type='password'; document.getElementById('pass-icon1').src='hide-password3.png';
+ b=0;
+}
+else {
+ document.getElementById('confirmPassword').type='text';
+document.getElementById('pass-icon1').src='hide-password4.png';
+b=1;
+}
+}
+
+
+
+        const signupButton = document.getElementById('signupButton');
+        const usernameInput = document.getElementById('username');
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+
+        signupButton.addEventListener('click', () => {
+            const username = usernameInput.value;
+            const email = emailInput.value;
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+
+            // Basic validations
+            if(username===''){
+                alert('Username can not be empty.');
+                return;
+            }
+            if(email===''){
+                alert('Email can not be empty.');
+                return;
+            }
+            if(password===''){
+                alert('Password can not be empty.');
+                return;
+            }
+            if(confirmPassword===''){
+                alert('ConfirmPasswod can not be empty.');
+                return;
+            }
+            if (username.length < 5) {
+                alert('Username must be at least 5 characters long.');
+                return;
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Invalid email address.');
+                return;
+            }
+
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                return;
+            }
+            if (!/\d/.test(password)) {
+                alert('Password must contain at least one number.');
+                return;
+            }
+            if (!/[a-z]/.test(password)) {
+                alert('Password must contain at least one lowercase letter.');
+                return;
+            }
+            if (!/[A-Z]/.test(password)) {
+                alert('Password must contain at least one uppercase letter.');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // If all validations pass, proceed with signup (replace with actual backend logic)
+            /*alert('Signup successful!'); */
+            window.location.href = 'login.html'; // Redirect to login page 
+        });
+    </script>
+
+</body>
+
+</html>

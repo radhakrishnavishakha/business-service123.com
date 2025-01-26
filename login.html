@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="logsign.css">
+   
+
+</head>
+
+<body style="background-color: #fff;">
+    <div class="container">
+        <div class="left-section">
+            <h1>Sign in to</h1>
+            <h2>BUSINESS SERVICE<br> SYSTEM</h2>
+            <p>if you don't have an account, <br> you can <a href="signup.html">Register here!</a></p>
+        </div>
+
+        <div class="image-section">
+            <img src="image1.jpeg" alt="Character Illustration">
+        </div>
+
+        <div class="right-section">
+            <form action="login-b.php" method="post"></form>
+            <h2>Login</h2>
+            <input type="text" id="username" name="username" placeholder="Enter user name">
+            <div class="password">
+            
+                <input type="password" id="password" name="password" placeholder="Password"><br>
+               <img src="hide-password.png" onclick="pass()" class="pass-icon" id="pass-icon">
+            </div>
+            <a href="#" class="forgot-password">Forget password?</a>
+            <button class="btn" type="submit" id="loginbutton" name="submit">Login</button>
+            <p class="p3">or continue with</p>
+            <div class="social-login">
+                <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-apple"></i>
+                <i class="fa-brands fa-google"></i>
+            </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var a;
+function pass(){
+if(a==1)
+{
+ document.getElementById('password').type='password'; document.getElementById('pass-icon').src='hide-password.png';
+ a=0;
+}
+else{
+ document.getElementById('password').type='text';
+document.getElementById('pass-icon').src='hide-password2.png';
+a=1;
+}
+}
+const loginButton = document.getElementById('loginbutton');
+        const usernameInput = document.getElementById('username');
+        
+        const passwordInput = document.getElementById('password');
+        
+
+        loginButton.addEventListener('click', () => {
+            const username = usernameInput.value;
+            
+            const password = passwordInput.value;
+            // Basic validations
+            if(username===''){
+                alert('Username can not be empty.');
+                return;
+            }
+            
+            if(password===''){
+                alert('Password can not be empty.');
+                return;
+            }
+            
+            if (username.length < 5) {
+                alert('Username must be at least 5 characters long.');
+                return;
+            }
+
+           
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long.');
+                return;
+            }
+            if (!/\d/.test(password)) {
+                alert('Password must contain at least one number.');
+                return;
+            }
+            if (!/[a-z]/.test(password)) {
+                alert('Password must contain at least one lowercase letter.');
+                return;
+            }
+            if (!/[A-Z]/.test(password)) {
+                alert('Password must contain at least one uppercase letter.');
+                return;
+            }
+
+           
+
+            // If all validations pass, proceed with signup (replace with actual backend logic)
+            alert('Signup successful!'); 
+            window.location.href = 'index.html'; // Redirect to login page 
+        });
+    </script>
+
+</body>
+
+</html>
